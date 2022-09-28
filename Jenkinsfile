@@ -4,6 +4,16 @@ pipeline{
     }
   agent any
   stages {
+        stage('sonarverify') {
+          
+           steps {
+                sh 'mvn clean verify sonar:sonar \
+  -Dsonar.projectKey=capstone-project \
+  -Dsonar.host.url=http://34.174.153.54:9000 \
+  -Dsonar.login=sqp_aa6a99aa7cc56c4df172dc4269349ff0625c0b42\
+                    -Dcheckstyle.skip'
+                }
+          } 
            stage('Build') {
           
            steps {
